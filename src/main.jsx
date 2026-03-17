@@ -2,13 +2,13 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import SingUp from './Pages/SignUp';
+import SignUp from './Pages/SignUp';
 import MainScreen from './Pages/MainScreen';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <SingUp />,
+    element: <SignUp />,
   },
   {
     path: "/MainScreen",
