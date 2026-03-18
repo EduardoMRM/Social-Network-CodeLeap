@@ -1,11 +1,12 @@
 {
-    "dados": [
-        {
-            "id": "1",
-            "username": "string",
-            "created_datetime": "datetime",
-            "title": "string",
-            "content": "string"
-        }
-    ]
+  "dados": [
+    {
+      "id": "1",
+      "username": "string",
+      "created_datetime": "datetime",
+      "title": "string",
+      "content": "string"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

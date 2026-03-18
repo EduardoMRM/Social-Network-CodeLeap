@@ -6,15 +6,16 @@ function SignUp() {
     const [name, setName] = useState("");
     const navigate = useNavigate();
     const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
+    const isValid = name.length === 0 || nameRegex.test(name);
 
     async function validateName() {
         const novoUser = {
-            id: Math.random(),
+            id: Math.floor(Math.random() * 100),
             username: name
         }
 
-        if (!nameRegex.test(name)) {
-            return;
+        if (!isValid) {
+            return false;
         }
 
         await fetch("http://localhost:3001/dados", {
@@ -25,6 +26,7 @@ function SignUp() {
             body: JSON.stringify(novoUser)
         });
 
+        localStorage.setItem("username", name);
         navigate("/MainScreen");
     }
 
@@ -39,13 +41,13 @@ function SignUp() {
                         placeholder="John doe"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="h-8 border rounded-xl border-gray-500 p-3" />
+                        className={`h-8 border rounded-xl p-3 focus:outline-none ${!isValid ? "border-red-500" : " focus:border-blue-400"}`} />
                 </div>
                 <button
                     type="submit"
                     onClick={validateName}
                     disabled={!nameRegex.test(name)}
-                    className="w-28 h-8 text-white font-bold text-center bg-blue-400 rounded-md self-end hover:bg-blue-800 disabled:bg-blue-100">ENTER</button>
+                    className="w-28 h-8 text-white font-bold text-center bg-blue-400 rounded-md self-end hover:bg-blue-800 disabled:bg-blue-100 cursor-pointer disabled:cursor-default">ENTER</button>
             </section>
         </div>
     )
