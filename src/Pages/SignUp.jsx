@@ -18,7 +18,7 @@ function SignUp() {
             return false;
         }
 
-        await fetch("http://localhost:3001/dados", {
+        await fetch("http://localhost:3001/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
